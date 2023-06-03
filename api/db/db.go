@@ -1,6 +1,7 @@
 package db
 
 import (
+	"api/data"
 	"api/env"
 	"fmt"
 
@@ -21,7 +22,7 @@ func Init() error {
 		return err
 	}
 
-	err = Db.AutoMigrate()
+	err = Db.AutoMigrate(&data.User{})
 	if err != nil {
 		return err
 	}
