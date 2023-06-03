@@ -10,6 +10,7 @@ type env struct {
 
 	WEB_APP_URL   string `env:"WEB_APP_URL,required"`
 	COOKIE_DOMAIN string `env:"COOKIE_DOMAIN,required"`
+	AllowOrigin   string `env:"ALLOW_ORIGIN,required"`
 
 	GHClientId     string `env:"GITHUB_CLIENT_ID,required"`
 	GHClientSecret string `env:"GITHUB_CLIENT_SECRET,required"`

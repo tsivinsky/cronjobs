@@ -25,7 +25,7 @@ func main() {
 	app := fiber.New()
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins:     env.Env.WEB_APP_URL,
+		AllowOrigins:     env.Env.AllowOrigin,
 		AllowCredentials: true,
 	}))
 	app.Use(recover.New())
