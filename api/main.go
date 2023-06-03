@@ -24,11 +24,17 @@ func main() {
 
 	app := fiber.New()
 
-	app.Use(cors.New())
+	app.Use(cors.New(cors.Config{
+		AllowOrigins:     env.Env.WEB_APP_URL,
+		AllowCredentials: true,
+	}))
 	app.Use(recover.New())
 
 	app.Get("/auth/github", handle.GitHubEntry)
 	app.Get("/auth/github/callback", handle.GitHubLogin)
+	app.Get("/auth/logout", handle.LogoutUser)
+
+	app.Get("/user", handle.GetUser)
 
 	log.Fatal(app.Listen(":5000"))
 }
