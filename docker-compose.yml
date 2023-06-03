@@ -4,9 +4,21 @@ services:
   db:
     image: postgres:15
     container_name: cronjobs-db
+    restart: always
     env_file:
       - .env
     ports:
       - 5432:5432
     volumes:
       - ./db-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: cronjobs-app
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
