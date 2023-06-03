@@ -34,8 +34,8 @@ func GitHubLogin(c *fiber.Ctx) error {
 	}
 
 	var user *data.User
-	if tx := db.Db.Where("github_login = ?", ghUser.Login).First(&user); tx.Error != nil {
-		user.GitHubLogin = ghUser.Login
+	if tx := db.Db.Where("login = ?", ghUser.Login).First(&user); tx.Error != nil {
+		user.Login = ghUser.Login
 		user.Avatar = ghUser.Avatar
 		user.Email = ghUser.Email
 		db.Db.Create(&user)
